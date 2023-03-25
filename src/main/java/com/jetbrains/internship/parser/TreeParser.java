@@ -2,13 +2,11 @@ package com.jetbrains.internship.parser;
 
 import com.jetbrains.internship.exceptions.InvalidEdgeException;
 import com.jetbrains.internship.exceptions.ParsingException;
-import com.jetbrains.internship.operations.Add;
-import com.jetbrains.internship.operations.Operation;
+import com.jetbrains.internship.parser.source.CharSource;
 import com.jetbrains.internship.tree.Tree;
 import com.jetbrains.internship.tree.TreeImpl;
 
 import java.io.IOException;
-import java.util.List;
 
 public class TreeParser implements Parser<Tree> {
     private final EdgeListParser parser;

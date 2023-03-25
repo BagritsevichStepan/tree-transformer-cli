@@ -1,4 +1,4 @@
-package com.jetbrains.internship;
+package com.jetbrains.internship.transformer;
 
 import com.jetbrains.internship.operations.Operation;
 

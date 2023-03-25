@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class SerializableTree implements Tree, Externalizable {
+    @Serial
+    private static final long serialVersionUID = 1L;
+
     @Override
     public void writeExternal(ObjectOutput out) throws IOException {
         out.writeObject(toEdgesList(getNodesInDfsOrder()));

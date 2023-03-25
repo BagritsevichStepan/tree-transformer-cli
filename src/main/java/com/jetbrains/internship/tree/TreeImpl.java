@@ -3,13 +3,20 @@ package com.jetbrains.internship.tree;
 import com.jetbrains.internship.operations.Add;
 import com.jetbrains.internship.operations.Remove;
 
-import java.io.OutputStreamWriter;
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.util.*;
 
 public class TreeImpl extends SerializableTree {
     private final Map<Long, Node> nodes = new HashMap<>();
     private final Set<Long> leavesIds = new HashSet<>();
     private Node root;
+
+    private static final char VERTICAL_BRANCH_CHARACTER = '|';
+    private static final String HORIZONTAL_BRANCH = "──";
+    private static final char CHILD_BRANCH_CHARACTER = '├';
+    private static final char LAST_CHILD_BRANCH_CHARACTER = '└';
+    private static final String HORIZONTAL_PADDING = " ".repeat(HORIZONTAL_BRANCH.length() + 1);
 
     public record Node(long id, int depth, Node parent, List<Node> children) {
         private Node(long id, Node parent) {
@@ -27,6 +34,27 @@ public class TreeImpl extends SerializableTree {
             nodes.add(this);
             children.forEach(child -> child.dfs(nodes));
         }
+
+        private void display(BufferedWriter output, StringBuilder sb, boolean lastChild) throws IOException {
+            write(output, sb.toString());
+            write(output, String.format("%c%s %d%n",
+                    !lastChild ? CHILD_BRANCH_CHARACTER : LAST_CHILD_BRANCH_CHARACTER,
+                    HORIZONTAL_BRANCH,
+                    id
+            ));
+            output.flush();
+
+            sb.append(!lastChild ? VERTICAL_BRANCH_CHARACTER : " ").append(HORIZONTAL_PADDING);
+            for (int i = 0; i < children.size(); i++) {
+                children.get(i).display(output, sb, i == children.size() - 1);
+            }
+            sb.setLength(sb.length() - 1 - HORIZONTAL_PADDING.length());
+        }
+
+        private void write(BufferedWriter output, String s) throws IOException {
+            output.write(s, 0, s.length());
+        }
+
 
         private void addChild(Node node) {
             children.add(node);
@@ -74,7 +102,9 @@ public class TreeImpl extends SerializableTree {
     @Override
     public List<Node> getNodesInDfsOrder() {
         List<Node> nodes = new ArrayList<>();
-        root.dfs(nodes);
+        if (root != null) {
+            root.dfs(nodes);
+        }
         return nodes;
     }
 
@@ -131,6 +161,7 @@ public class TreeImpl extends SerializableTree {
     private void performRemove(Remove removeOperation) {
         Node node = getNode(removeOperation.nodeId());
         removeLeaveId(node.id);
+        nodes.remove(node.id);
 
         if (!node.isRoot()) {
             node.parent.removeChild(node);
@@ -145,7 +176,7 @@ public class TreeImpl extends SerializableTree {
     }
 
     @Override
-    public void display(OutputStreamWriter output) {
-        // TODO
+    public void display(BufferedWriter output) throws IOException {
+        root.display(output, new StringBuilder(), true);
     }
 }

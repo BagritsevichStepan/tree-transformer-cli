@@ -1,4 +1,4 @@
-package com.jetbrains.internship;
+package com.jetbrains.internship.transformer;
 
 import com.jetbrains.internship.operations.Add;
 import com.jetbrains.internship.operations.Operation;
@@ -9,7 +9,6 @@ import com.jetbrains.internship.tree.TreeImpl.Node;
 
 import java.util.*;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 public class TreeTransformer implements Transformable {
     private final Tree treeToTransform;

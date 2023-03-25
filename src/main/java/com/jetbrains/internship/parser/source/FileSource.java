@@ -1,26 +1,25 @@
-package com.jetbrains.internship.parser;
+package com.jetbrains.internship.parser.source;
+
+import com.jetbrains.internship.parser.source.CharSource;
+import com.jetbrains.internship.util.InputOutputUtil;
 
 import java.io.*;
 
-public class FileSource implements CharSource, Closeable {
+public class FileSource implements CharSource {
     private final Reader reader;
-    private char[] buffer = new char[1024];
+    private char[] buffer = new char[InputOutputUtil.BUFFER_SIZE];
     private int pos;
     private int read;
+
+    public FileSource(InputStream inputStream, String charsetName) throws IOException {
+        reader = new InputStreamReader(inputStream, charsetName);
+    }
 
     private void read() throws IOException {
         if (pos == read) {
             read = reader.read(buffer);
             pos = 0;
         }
-    }
-
-    public FileSource(InputStream inputStream) throws IOException {
-        reader = new InputStreamReader(inputStream);
-    }
-
-    public FileSource(InputStream inputStream, String charsetName) throws IOException {
-        reader = new InputStreamReader(inputStream, charsetName);
     }
 
     @Override
@@ -37,8 +36,6 @@ public class FileSource implements CharSource, Closeable {
 
     @Override
     public void close() throws IOException {
-        if (reader != null) {
-            reader.close();
-        }
+        reader.close();
     }
 }
