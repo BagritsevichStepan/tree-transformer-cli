@@ -6,9 +6,13 @@ Technologies that were used: Java Serialization, [Picocli](https://picocli.info)
 
 ## Links
 * [Usage](#usage)
-  1. [First part. Transformating](#transformating)
+  1. [First part. Transforming](#transforming)
   2. [Second part. Creating](#creating)
 * [Project Structure](#project-structure)
+  1. [Tree](#tree)
+  2. [Transformer](#transformer)
+  3. [Parser](#parser)
+  4. [Testing](#testing)
 
 
 ## Usage
@@ -19,7 +23,7 @@ To run the plugin use the command `java -jar wmms-test-task2-1.0.jar` in the Ter
 
 The CLI is developed with [picocli](https://picocli.info). To find out what startup parameters exist, use the `-h`, `--help` or `help` parameter, as shown in the video.
 
-### <a name="transformating"></a>First part. Transformating
+### <a name="transforming"></a>First part. Transforming
 
 This program accepts 2 general trees as an input and calculates the list of transformations required to get the second tree from the first.
 
@@ -57,10 +61,31 @@ where `$` - the different number of whitespaces. The program is _case-insensitiv
 
 ## Project Structure
 
+### Tree
 
+The tree implementation is in the package `tree` and has the following structure:
 
+<img width="684" alt="Bildschirmfoto 2023-03-28 um 02 25 39" src="https://user-images.githubusercontent.com/43710058/228095805-ea6f9ec9-ef95-48e0-8642-0756c2eb8280.png">
 
+`TreeImpl` implements tree, contains class `Node`. The class uses `Map` to build tree, so the amortized time for `ADD` and `REMOVE` is `O(1)`. Thus, to build a tree from a file takes amortized `O(n)`.
 
+`SerializableTree` is an abstract class that implements `Tree` and `Externalizable` interfaces. I decided to implement `Externalizable` because we can save trees more efficiently than with `Serializable`. We only need to serialize the list of edges. And as we can build the tree in `O(n)` it is also fast. All other `tree` classes should extend this class to be serializable.
+
+### Transformer
+
+The tree transformer implementation is in the package `transformer` and has one interface `Transformable` and one class `TreeTransformer` which implemenets this interface. `TreeTransformer` takes two trees and finds a transformation list for `O(n)`.
+
+### Parser
+
+The parser implementation is in the package `parser` and has the following structure: 
+
+<img width="684" alt="Bildschirmfoto 2023-03-28 um 02 48 52" src="https://user-images.githubusercontent.com/43710058/228098372-f10d7594-4401-469c-944c-0fb310b7701b.png">
+
+The interface `Parser` implements parser, the `CharSource` interface is used by parser classes to get the current char.
+
+### Testing
+
+For testing was used JUnit.
 
 
 
