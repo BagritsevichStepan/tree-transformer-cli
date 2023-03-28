@@ -67,7 +67,7 @@ The tree implementation is in the package `tree` and has the following structure
 
 <img width="684" alt="Bildschirmfoto 2023-03-28 um 02 25 39" src="https://user-images.githubusercontent.com/43710058/228095805-ea6f9ec9-ef95-48e0-8642-0756c2eb8280.png">
 
-`TreeImpl` implements tree, contains class `Node`. The class uses `Map` to build tree, so the amortized time for `ADD` and `REMOVE` is `O(1)`. Thus, to build a tree from a file takes amortized `O(n)`.
+`TreeImpl` implements tree, contains class `Node`. The class uses `Map` to build tree, so the amortized time for `ADD` and `REMOVE` is `O(1)`. Thus, to build a tree from a file takes `O(n)`.
 
 `SerializableTree` is an abstract class that implements `Tree` and `Externalizable` interfaces. I decided to implement `Externalizable` because we can save trees more efficiently than with `Serializable`. We only need to serialize the list of edges. And as we can build the tree in `O(n)` it is also fast. All other `tree` classes should extend this class to be serializable.
 
