@@ -1,8 +1,8 @@
 # Tree Transformer
 
-The repository contains a solution of the [2 test task](https://gist.github.com/mmazurkevich/cff4726d088589e6990088000fbe210f) in [Workspace Model Metadata Storage Team](https://internship.jetbrains.com/projects/1327/).
+The repository contains the implementation of CLI that can generate, print and save trees. Also calculates the list of transformations required to get the second tree from the first.
 
-Technologies that were used: Java Serialization, [Picocli](https://picocli.info), JUnit.
+Technologies that were used: Java Serialization, [Picocli](https://picocli.info).
 
 ## Links
 * [Usage](#usage)
@@ -12,7 +12,6 @@ Technologies that were used: Java Serialization, [Picocli](https://picocli.info)
   1. [Tree](#tree)
   2. [Transformer](#transformer)
   3. [Parser](#parser)
-  4. [Testing](#testing)
 
 
 ## Usage
@@ -82,10 +81,6 @@ The parser implementation is in the package `parser` and has the following struc
 <img width="684" alt="Bildschirmfoto 2023-03-28 um 02 48 52" src="https://user-images.githubusercontent.com/43710058/228098372-f10d7594-4401-469c-944c-0fb310b7701b.png">
 
 The interface `Parser` implements parser, the `CharSource` interface is used by parser classes to get the current char.
-
-### Testing
-
-For testing was used JUnit.
 
 
 
