@@ -2,8 +2,6 @@
 
 The repository contains the implementation of CLI that can generate, print and save trees. Also calculates the list of transformations required to get the second tree from the first.
 
-Technologies that were used: Java Serialization, [Picocli](https://picocli.info).
-
 ## Links
 * [Usage](#usage)
   1. [First part. Transforming](#transforming)
