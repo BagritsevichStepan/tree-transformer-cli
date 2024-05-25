@@ -13,7 +13,7 @@ The repository contains the implementation of CLI that can generate, print and s
 
 ## Usage
 
-https://user-images.githubusercontent.com/43710058/228082494-96f4eae6-89a0-482c-96aa-b456ec166459.mp4
+https://github.com/BagritsevichStepan/tree-transformer-cli/assets/43710058/4c6c7375-75e7-4c94-9a23-45606f5b23d4
 
 Run the programm using executable file.
 
