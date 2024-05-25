@@ -16,7 +16,7 @@ The repository contains the implementation of CLI that can generate, print and s
 
 https://user-images.githubusercontent.com/43710058/228082494-96f4eae6-89a0-482c-96aa-b456ec166459.mp4
 
-To run the plugin use the command `java -jar wmms-test-task2-1.0.jar` in the Terminal or open the project in your IDEA and then press the button `Run`.
+Run the programm using executable file.
 
 The CLI is developed with [picocli](https://picocli.info). To find out what startup parameters exist, use the `-h`, `--help` or `help` parameter, as shown in the video.
 
@@ -24,7 +24,7 @@ The CLI is developed with [picocli](https://picocli.info). To find out what star
 
 This program accepts 2 general trees as an input and calculates the list of transformations required to get the second tree from the first.
 
- To run it use the command `java -jar wmms-test-task2-1.0.jar transforming`. You can add the parameter `-p` or `--print-trees` to print both trees to the consonle. Also you can define the files name in parameters or print them in the console after the programm starts.
+To run it use the command `./tree-transformer.sh transforming`. You can add the parameter `-p` or `--print-trees` to print both trees to the consonle. Also you can define the files name in parameters or print them in the console after the programm starts.
 
 As a result you will get a list of transformations required to get the second tree from the first.
 
@@ -40,9 +40,9 @@ where `$` - the different number of whitespaces. All ids must have `Long` format
 
 ### <a name="creating"></a>Second part. Creating
 
-This programm accepts `ADD`, `REMOVE` and `EXIT` commands and applies them to the tree stored in memory. After each command, the current tree structure is printed to the console. After each command the programm saves and loads the generated tree in binary format using _Java Serialization_.
+This programm accepts `ADD`, `REMOVE` and `EXIT` commands and applies them to the tree stored in memory. After each command, the current tree structure is printed to the console. After each command the programm saves and loads the generated tree in binary format.
 
-To run it use the command `java -jar wmms-test-task2-1.0.jar creating`. You can add the parameter `-l` or `--load-tree` to load the tree from file before the program starts. Also you can define the file name in parameters, which will be used to save the tree and from which the tree will be loaded. If you do not specify it, the standard file `tree.txt` will be used.
+To run it use the command `./tree-transformer.sh creating`. You can add the parameter `-l` or `--load-tree` to load the tree from file before the program starts. Also you can define the file name in parameters, which will be used to save the tree and from which the tree will be loaded. If you do not specify it, the standard file `tree.txt` will be used.
 
 Аfter the program starts, you can generate the tree with the `ADD` and `REMOVE` commands. To end the program use the `EXIT` command.
 
