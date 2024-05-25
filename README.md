@@ -27,7 +27,8 @@ To run it use the command `./tree-transformer.sh transforming`. You can add the 
 
 As a result you will get a list of transformations required to get the second tree from the first.
 
-<img width="791" alt="Bildschirmfoto 2023-03-28 um 01 04 14" src="https://user-images.githubusercontent.com/43710058/228086331-f55865f0-899b-4ef3-b7ee-e1050c0f124c.png">
+<img width="1017" alt="Tree transforming" src="https://github.com/BagritsevichStepan/tree-transformer-cli/assets/43710058/f81b79a2-73ea-4ae1-8b62-1b25d6cf0e4e">
+
 
 #### Input Files Format
 
@@ -45,7 +46,8 @@ To run it use the command `./tree-transformer.sh creating`. You can add the para
 
 Аfter the program starts, you can generate the tree with the `ADD` and `REMOVE` commands. To end the program use the `EXIT` command.
 
-<img width="761" alt="Bildschirmfoto 2023-03-28 um 01 31 33" src="https://user-images.githubusercontent.com/43710058/228089848-22e91538-730b-479c-9f91-063a908b6946.png">
+<img width="952" alt="Tree creating" src="https://github.com/BagritsevichStepan/tree-transformer-cli/assets/43710058/5041494d-d9f5-45c5-8bf0-8916fb00e1ca">
+
 
 #### Commands Format
 
