@@ -4,12 +4,11 @@ The repository contains the implementation of CLI that can generate, print and s
 
 ## Links
 * [Usage](#usage)
-  1. [First part. Transforming](#transforming)
-  2. [Second part. Creating](#creating)
-* [Project Structure](#project-structure)
-  1. [Tree](#tree)
-  2. [Transformer](#transformer)
-  3. [Parser](#parser)
+  * [First part. Transforming](#transforming)
+  * [Second part. Creating](#creating)
+* [Project Details](#project-details)
+  * [Tree](#tree)
+  * [Transformer](#transformer)
 
 
 ## Usage
@@ -56,29 +55,17 @@ The program accepts commands in the format:
 
 where `$` - the different number of whitespaces. The program is _case-insensitive_, so you can print `reMoVe` too. All ids must have `Long` format.
 
-## Project Structure
+## Project Details
 
 ### Tree
 
-The tree implementation is in the package `tree` and has the following structure:
+The `TreeImpl` class uses `Map` to build tree, so the amortized time for `ADD` and `REMOVE` is `O(1)`. Thus, to build a tree from a file takes `O(n)`.
 
-<img width="684" alt="Bildschirmfoto 2023-03-28 um 02 25 39" src="https://user-images.githubusercontent.com/43710058/228095805-ea6f9ec9-ef95-48e0-8642-0756c2eb8280.png">
-
-`TreeImpl` implements tree, contains class `Node`. The class uses `Map` to build tree, so the amortized time for `ADD` and `REMOVE` is `O(1)`. Thus, to build a tree from a file takes `O(n)`.
-
-`SerializableTree` is an abstract class that implements `Tree` and `Externalizable` interfaces. I decided to implement `Externalizable` because we can save trees more efficiently than with `Serializable`. We only need to serialize the list of edges. And as we can build the tree in `O(n)` it is also fast. All other `tree` classes should extend this class to be serializable.
+`SerializableTree` is an abstract class that implements `Tree` and `Externalizable` interfaces. It was decided to implement `Externalizable` because we can save trees more efficiently than with `Serializable`. We only need to serialize the list of edges. And as we can build the tree in `O(n)` it is also fast. All other `tree` classes should extend this class to be serializable.
 
 ### Transformer
 
-The tree transformer implementation is in the package `transformer` and has one interface `Transformable` and one class `TreeTransformer` which implemenets this interface. `TreeTransformer` takes two trees and finds a transformation list for `O(n)`.
-
-### Parser
-
-The parser implementation is in the package `parser` and has the following structure: 
-
-<img width="684" alt="Bildschirmfoto 2023-03-28 um 02 48 52" src="https://user-images.githubusercontent.com/43710058/228098372-f10d7594-4401-469c-944c-0fb310b7701b.png">
-
-The interface `Parser` implements parser, the `CharSource` interface is used by parser classes to get the current char.
+`TreeTransformer` takes two trees and finds a transformation list for `O(n)`.
 
 
 
